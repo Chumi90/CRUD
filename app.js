@@ -41,8 +41,7 @@ app.get('/',(req,res)=>{
             </form>
         `);
         usuarios.map((usuario)=>console.log(usuario.id,usuario.nombre, usuario.edad, usuario.lugarProcedencia));
-        //usuarios.map((usuario)=>console.log(usuario.nombre));
-        reloadUser();
+        reloadUser(); //llamamos a la función cada vez que recarguemos la página para actualizar las rutas añadidas
 })
 
 
@@ -55,11 +54,10 @@ app.post('/usuarios',(req,res)=>{ //Obtenemos los datos introducidos por el usua
         lugarProcedencia:req.body.lugarProcedencia //recoge el name con el valor lugar de procedencia
     }
     usuarios.push(newUser); //Agregamos un nuevo usuario a la lista de usuarios
-    reloadUser();
     res.redirect('/'); //Redirigimos a la página principal para que se añada el nuevo usuario.
 })
 
-//Funcion para crear un get con los usuarios
+//Funcion para crear un get con los usuarios en función de sus nombres
 function reloadUser(){
     //console.log("funcion")
     usuarios.forEach(usuario=>{
